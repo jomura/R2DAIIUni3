@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{str.reviewListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+                    <h1>#{str.reviewListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{reviewBean.iniciar()}"></p:commandButton>
+                </h:form>
+                    <p:dataTable value="#{reviewBean.reviews}" var="r">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{reviewBean.editar(r)}"></p:commandButton>
+                        </h:form>
+                        
+                    </p:column>
+                        <p:column headerText="#{str.documentKeyNameHeader}">
+                            <p:outputLabel value="#{r.documentKey}"></p:outputLabel>
+                    </p:column>
+                        
+                        <p:column headerText="#{str.creationDateNameHeader}">
+                            <p:outputLabel value="#{r.creationDate}"></p:outputLabel>
+                    </p:column>
+                        
+                        <p:column headerText="#{str.userKeyNameHeader}">
+                            <p:outputLabel value="#{r.userKey}"></p:outputLabel>
+                    </p:column>
+                        
+                        <p:column headerText="#{str.rantingNameHeader}">
+                            <p:outputLabel value="#{r.ranting}"></p:outputLabel>
+                    </p:column>
+                        
+                        <p:column headerText="#{str.commentsNameHeader}">
+                            <p:outputLabel value="#{r.comments}"></p:outputLabel>
+                    </p:column>
+                        
+                        <p:column headerText="#{str.dataNameHeader}">
+                            <p:outputLabel value="#{r.data}"></p:outputLabel>
+                    </p:column>
+                        
+                </p:dataTable>
+            </ui:define>
+	</ui:composition>
+    </h:body>
+</html>
+

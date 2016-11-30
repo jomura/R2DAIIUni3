@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{str.teachingListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+                <h1>#{str.teachingListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{docenteBean.iniciar()}"></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{docenteBean.docentes}" var="d">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{docenteBean.editar(d)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.teachingNameHeader}">
+                        <p:outputLabel value="#{d.nombre}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.lastnamefatherNameHeader}">
+                        <p:outputLabel value="#{d.appat}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.lastnamemotherNameHeader}">
+                        <p:outputLabel value="#{d.apmat}"></p:outputLabel>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+	</ui:composition>
+    </h:body>
+</html>
+

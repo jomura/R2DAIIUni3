@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>#{str.winerListTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+                    <h2>#{str.winerListTitle}</h2>
+			<h:form>
+				<p:commandButton value="#{str.buttonAdd}"
+                                                 action="#{ganadorBean.iniciar()}"></p:commandButton>
+			</h:form>
+                    <p:dataTable value="#{ganadorBean.ganadores}" var="u">
+				<p:column headerText="#{str.action}">
+				<h:form>
+					<h:commandButton value="#{str.buttonEdit}"
+                                                         action="#{ganadorBean.editar(u)}"></h:commandButton>
+					</h:form>
+				</p:column>
+                            <p:column headerText="#{str.matchNameHeader}">
+                                <p:outputLabel value="#{u.partido}"></p:outputLabel>
+				</p:column>
+                        <p:column headerText="#{str.dateNameHeader}">
+                                <p:outputLabel value="#{u.fecha}"></p:outputLabel>
+				</p:column>
+                        <p:column headerText="#{str.typeofgameNameHeader}">
+                            <p:outputLabel value="#{u.nombre}"></p:outputLabel>
+				</p:column>
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

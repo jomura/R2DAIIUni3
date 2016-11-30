@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{str.winerFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.winerFormHeader}</h2>
+                <p:fieldset legend="#{str.winerLegendForm}">
+                    <h:form> 
+                        <h:panelGrid columns="1">
+                            <p:inputText placeholder="#{str.typeofgameNameHeader}"
+                                         value="#{ganadorBean.ganador.nombre}"></p:inputText>
+                            <p:inputText placeholder="#{str.matchNameHeader}"
+                                         value="#{ganadorBean.ganador.partido}"></p:inputText>
+                            <p:inputText placeholder="#{str.dateNameHeader}"
+                                         value="#{ganadorBean.ganador.fecha}"></p:inputText>
+                            <p:selectOneMenu value="#{ganadorBean.ganador.juego.idJuego}">
+                                <f:selectItems value="#{ganadorBean.juegos}" var="r"
+                                               itemLabel="#{r.equipo1}" itemValue="#{r.marcador}"></f:selectItems>
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}"
+                                         action="#{ganadorBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}"
+                                         action="#{ganadorBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}"
+                                         action="#{ganadorBean.cancelar()}"></p:commandButton>
+
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

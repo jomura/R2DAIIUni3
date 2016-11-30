@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{str.gamerListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+                <h1>#{str.gamerListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{juegoBean.iniciar()}"></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{juegoBean.juegos}" var="j">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{juegoBean.editar(j)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.gamer1NameHeader}">
+                        <p:outputLabel value="#{j.equipo1}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.gamer2NameHeader}">
+                        <p:outputLabel value="#{j.equipo2}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.scorePointHeader}">
+                        <p:outputLabel value="#{j.marcador}"></p:outputLabel>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+	</ui:composition>
+    </h:body>
+</html>
+

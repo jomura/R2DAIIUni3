@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{str.reviewFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.reviewFormHeader}</h2>
+                <p:fieldset legend="#{str.reviewLegendForm}">
+                    <h:form>
+
+                        <p:inputText placeholder="#{str.documentKeyNameHeader}"
+                                     value="#{reviewBean.review.documentKey}"></p:inputText>
+                                     
+                                     <p:inputText placeholder="#{str.creationDateNameHeader}"
+                                     value="#{reviewBean.review.creationDate}"></p:inputText>
+                                     
+                                     <p:inputText placeholder="#{str.userKeyNameHeader}"
+                                     value="#{reviewBean.review.userKey}"></p:inputText>
+                                     
+                                     <p:inputText placeholder="#{str.rantingNameHeader}"
+                                     value="#{reviewBean.review.ranting}"></p:inputText>
+                                     
+                                     <p:inputText placeholder="#{str.commentsNameHeader}"
+                                                  value="#{reviewBean.review.comments}"></p:inputText>
+                                                  
+                                    <p:inputText placeholder="#{str.dataNameHeader}"
+                                                 value="#{reviewBean.review.data}"></p:inputText>
+
+                        <p:commandButton value="#{str.buttonSave}"
+                                         action="#{juegoBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}"
+                                         action="#{juegoBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}"
+                                         action="#{juegoBean.cancelar()}"></p:commandButton>
+
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
